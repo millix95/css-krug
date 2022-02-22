@@ -1,13 +1,29 @@
 * {
-  margin: 0;
   background-color: #050210;
 }
-/*krug koji se okrece*/
+/*krug joji je postavljen sa blur efektom i koji se isto okrece*/
+.krug2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+  position: relative;
+  border-radius: 50%;
+  animation-name: okretanje;
+  animation-duration: 1s;
+  margin: 0 auto;
+  top: -89px;
+  left: 8px;
+  animation-iteration-count: infinite;
+  z-index: 1;
+  filter: blur(40px);
+  animation-timing-function: linear;
+}
+/*krug u boji koji se rotira*/
 .krug {
   width: 300px;
   height: 300px;
   background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
-  position: absolute;
+  position: relative;
   left: calc(50vw - 150px);
   top: calc(50vh - 150px);
   animation-name: okretanje;
@@ -17,21 +33,33 @@
   z-index: 2;
   animation-timing-function: linear;
 }
-/*krug joji je postavljen sa blur efektom i koji se isto okrece*/
-.krug2 {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
-  position: relative;
-  left: calc(50vw - 150px);
-  top: calc(50vh - 150px);
+/*unutrasnja boja kruga koji se rotira*/
+.krug::before {
+  content: '';
+  background-color: #050210;
+  width: 250px;
+  height: 250px;
+  position: absolute;
   border-radius: 50%;
-  animation-name: okretanje;
-  animation-duration: 1s;
+  z-index: 3;
+  left: 25px;
+  top: 25px;
+}
+/*pulsirajuci krug*/
+.krug::after {
+  content: '';
+  width: 250px;
+  height: 250px;
+  background-color: #120938;
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  border-radius: 50%;
+  z-index: 3;
+  animation-name: puls;
+  animation-duration: 1.2s;
   animation-iteration-count: infinite;
-  z-index: 1;
-  filter: blur(40px);
-  animation-timing-function: linear;
+  transform-origin: 50% 50% 0;
 }
 /*animacija za okretanje krugova*/
 @keyframes okretanje {
@@ -42,31 +70,6 @@
   100% {
     transform: rotate(360deg);
   }
-}
-/*crni krug koji se nalazi ispred obojanog kruga*/
-.unutar-krug {
-  width: 250px;
-  height: 250px;
-  background-color: #050210;
-  position: absolute;
-  left: calc(50vw - 125px);
-  top: calc(50vh - 125px);
-  border-radius: 50%;
-  z-index: 3;
-}
-/*krug koji se nalazi ispred crnog kruga i koji pulsira i raste*/
-.unutar-animacija {
-  width: 250px;
-  height: 250px;
-  background-color: #120938;
-  position: absolute;
-  left: calc(50vw - 125px);
-  top: calc(50vh - 125px);
-  border-radius: 50%;
-  z-index: 3;
-  animation-name: puls;
-  animation-duration: 1.2s;
-  animation-iteration-count: infinite;
 }
 /*animacija za krug koji pulsira*/
 @keyframes puls {
@@ -83,7 +86,4 @@
     opacity: 0;
     transform: scale(1);
   }
-}
-.krug:hover {
-  transform: scale(2);
 }
