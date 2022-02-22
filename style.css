@@ -11,11 +11,10 @@
   animation-name: okretanje;
   animation-duration: 1s;
   margin: 0 auto;
-  top: -89px;
-  left: 8px;
+  top: -252px;
+  filter: blur(40px);
   animation-iteration-count: infinite;
   z-index: 1;
-  filter: blur(40px);
   animation-timing-function: linear;
 }
 /*krug u boji koji se rotira*/
@@ -24,26 +23,27 @@
   height: 300px;
   background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
   position: relative;
-  left: calc(50vw - 150px);
-  top: calc(50vh - 150px);
-  animation-name: okretanje;
+  align-items: center;
+  margin: 0 auto;
+  animation-name: okretanjee;
   animation-duration: 1s;
   border-radius: 50%;
   animation-iteration-count: infinite;
   z-index: 2;
+  top: 3em;
   animation-timing-function: linear;
 }
-/*unutrasnja boja kruga koji se rotira*/
+/*unutrasnja boja kruga koji se ne rotira*/
 .krug::before {
   content: '';
   background-color: #050210;
   width: 250px;
   height: 250px;
   position: absolute;
+  top: 25px;
+  left: 25px;
   border-radius: 50%;
   z-index: 3;
-  left: 25px;
-  top: 25px;
 }
 /*pulsirajuci krug*/
 .krug::after {
@@ -86,4 +86,12 @@
     opacity: 0;
     transform: scale(1);
   }
+}
+.novo {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  top: calc(50vh - 200px);
 }
